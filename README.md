@@ -2,7 +2,7 @@
 
 ## Quick start
 
-```
+```typescript
 import crossify from "crossify";
 
 const url = "/";
