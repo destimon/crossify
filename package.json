@@ -1,0 +1,20 @@
+{
+  "name": "crossify",
+  "version": "1.0.0",
+  "description": "",
+  "main": "crossify.ts",
+  "scripts": {
+    "dev": "nodemon crossify.ts",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "undici": "^4.3.1"
+  },
+  "devDependencies": {
+    "@types/node": "^16.4.12",
+    "nodemon": "^2.0.12",
+    "ts-node": "^10.1.0"
+  }
+}
