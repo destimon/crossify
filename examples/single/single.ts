@@ -2,8 +2,8 @@ import crossify from "../../";
 
 const cross = crossify();
 
-const url = "/todo/:id";
-const apiUrl = "https://jsonplaceholder.typicode.com/todos/:id";
+const url = "/todo";
+const apiUrl = "https://jsonplaceholder.typicode.com/todos/1";
 
 type Data = Record<string, any>;
 
@@ -17,4 +17,4 @@ cross.get(url, apiUrl, (data: Data) => {
   return result;
 });
 
-cross.start(3000);
+cross.start(3000, "localhost");
