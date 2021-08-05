@@ -10,7 +10,7 @@ export class Crossify {
   private Server = new HttpServer();
   private serverInstance = this.Server.createServer();
 
-  parseParams(url: string) {
+  private parseParams(url: string) {
     return url.split("/").filter((part) => part.startsWith(":"));
   }
 
