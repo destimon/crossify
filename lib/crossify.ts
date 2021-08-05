@@ -25,7 +25,9 @@ export class Crossify {
     };
   }
 
-  start(port: number): http.Server {
-    return this.serverInstance.listen(port);
+  public start(port: number | string): http.Server;
+  public start(port: number | string, hostname: string): http.Server;
+  public start(port: number | string, ...args: any[]): http.Server {
+    return this.serverInstance.listen(port, ...args);
   }
 }
