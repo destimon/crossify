@@ -1,13 +1,13 @@
 {
   "name": "crossify",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.ts",
+  "description": "Lightweight web framework for cross API handling",
+  "main": "dist/index.js",
   "scripts": {
-    "dev": "nodemon crossify.ts",
+    "prepublish": "tsc",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "Dmitry Cherendieiev",
   "license": "ISC",
   "dependencies": {
     "undici": "^4.3.1"
