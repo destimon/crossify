@@ -1,8 +1,8 @@
 import crossify from "../../";
 
 const cross = crossify({});
-const url = "/todos";
-const apiUrl = "https://jsonplaceholder.typicode.com/todos";
+const url = "/todos/:id";
+const apiUrl = "https://jsonplaceholder.typicode.com/todos/:id";
 
 type Data = Record<string, any>;
 
