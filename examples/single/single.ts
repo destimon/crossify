@@ -1,6 +1,7 @@
 import crossify from "../../";
 
-const cross = crossify({});
+const cross = crossify();
+
 const url = "/todo/:id";
 const apiUrl = "https://jsonplaceholder.typicode.com/todos/:id";
 
