@@ -4,6 +4,12 @@
 
 <br />
 
+# It's ALPHA!
+
+Project may work improperly...
+
+# Crossify
+
 Crossify is a lightweight and mainly focused on the cross API fetching framework.
 Without overheaded functionality you can easily build up your lightweight API
 which is just processing data from an external APIs.
@@ -11,7 +17,7 @@ which is just processing data from an external APIs.
 Crossify gives you direct control to the APIs data with all socket and fetching business
 logic under the hood!
 
-## Quick start
+# Quick start
 
 ### Example
 
