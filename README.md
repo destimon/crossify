@@ -12,12 +12,16 @@ logic under the hood!
 ```typescript
 import crossify from "crossify";
 
+const cross = crossify();
+
 const url = "/";
 const apiUrl = "https://jsonplaceholder.typicode.com/todos/1";
 
 type Data = Record<string, any>;
 
-crossify.get<Data>(url, apiUrl, (data) => {
+cross.get(url, apiUrl, (data: Data) => {
+  // Process the data as you want here
+  
   const result = Object.defineProperty(data, "title", {
     value: "Hello world!",
   });
@@ -25,5 +29,5 @@ crossify.get<Data>(url, apiUrl, (data) => {
   return result;
 });
 
-crossify.start(3000);
+cross.start(3000);
 ```
