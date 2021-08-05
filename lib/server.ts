@@ -4,7 +4,7 @@ import { Crossify } from "./crossify";
 
 type UrlWithParams = [string, string[]];
 
-export class HttpServer extends Server {
+export class CrossifyServer extends Server {
   private api = new Api();
 
   private patchUrlWithParams = (url: string): UrlWithParams => {

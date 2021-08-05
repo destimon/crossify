@@ -1,13 +1,13 @@
 import { Handler, Routes } from "../types/http";
 import http from "http";
-import { HttpServer } from "./http";
+import { CrossifyServer } from "./server";
 
 export class Crossify {
   static routes: Routes = {};
 
   constructor(opts?: {}) {}
 
-  private Server = new HttpServer();
+  private Server = new CrossifyServer();
   private serverInstance = this.Server.createServer();
 
   private parseParams(url: string) {
