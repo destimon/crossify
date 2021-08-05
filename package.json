@@ -2,7 +2,7 @@
   "name": "crossify",
   "version": "1.0.0",
   "description": "",
-  "main": "crossify.ts",
+  "main": "index.ts",
   "scripts": {
     "dev": "nodemon crossify.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
