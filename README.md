@@ -1,3 +1,9 @@
+<div align="center">
+<img src="https://github.com/destimon/crossify/blob/main/crossify.png?raw=true" width="auto" height="auto"/>
+</div>
+
+<br />
+
 Crossify is a lightweight and mainly focused on the cross API fetching framework.
 Without overheaded functionality you can easily build up your lightweight API
 which is just processing data from an external APIs.
