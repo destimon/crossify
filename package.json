@@ -1,6 +1,6 @@
 {
   "name": "crossify",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Lightweight web framework for cross API handling",
   "main": "dist/index.js",
   "scripts": {
