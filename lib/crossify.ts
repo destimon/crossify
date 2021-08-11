@@ -1,28 +1,42 @@
-import { Handler, Routes } from "../types/http";
+import { Handler } from "../types/http";
 import http from "http";
 import { CrossifyServer } from "./server";
+import { Router } from "./router";
 
 export class Crossify {
-  static routes: Routes = {};
-
+  // TODO: Implement options functionality
   constructor(opts?: {}) {}
 
-  private Server = new CrossifyServer();
-  private serverInstance = this.Server.createServer();
-
-  private parseParams(url: string) {
-    return url.split("/").filter((part) => part.startsWith(":"));
-  }
+  private readonly Server = new CrossifyServer();
+  private readonly router = new Router();
+  private readonly serverInstance = this.Server.createServer();
 
   get(url: string, api: string, handler: Handler) {
-    const params = this.parseParams(url);
+    return this.router.registerMethod(url, api, handler, "GET");
+  }
 
-    Crossify.routes[url] = {
-      api,
-      handler,
-      url,
-      params,
-    };
+  post(url: string, api: string, handler: Handler) {
+    return this.router.registerMethod(url, api, handler, "POST");
+  }
+
+  delete(url: string, api: string, handler: Handler) {
+    return this.router.registerMethod(url, api, handler, "DELETE");
+  }
+
+  head(url: string, api: string, handler: Handler) {
+    return this.router.registerMethod(url, api, handler, "HEAD");
+  }
+
+  patch(url: string, api: string, handler: Handler) {
+    return this.router.registerMethod(url, api, handler, "PATCH");
+  }
+
+  put(url: string, api: string, handler: Handler) {
+    return this.router.registerMethod(url, api, handler, "PUT");
+  }
+
+  options(url: string, api: string, handler: Handler) {
+    return this.router.registerMethod(url, api, handler, "OPTIONS");
   }
 
   public start(port: number | string): http.Server;
