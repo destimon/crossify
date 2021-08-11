@@ -1,41 +1,21 @@
 import http, { RequestListener, Server } from "http";
+import { HttpMethod } from "../types/http";
 import { Api } from "./api";
-import { Crossify } from "./crossify";
-
-type UrlWithParams = [string, string[]];
+import { Router } from "./router";
 
 export class CrossifyServer extends Server {
   private api = new Api();
 
-  private patchUrlWithParams = (url: string): UrlWithParams => {
-    const urlParts = url.split("/");
-    const paramValues: string[] = [];
-    const routes = Object.keys(Crossify.routes);
-    const currentRoute = routes.find((route) => {
-      const replacedRoute = route.split("/").map((routePart, index) => {
-        if (routePart.startsWith(":")) {
-          paramValues.push(urlParts[index]);
-
-          return urlParts[index];
-        }
-
-        return routePart;
-      });
-
-      return replacedRoute.join("/") === url;
-    });
-
-    return [currentRoute, paramValues];
-  };
-
   private requestHandler: RequestListener = async (req, res) => {
     try {
-      const { url } = req;
+      const { url, method } = req;
       if (!url) throw new Error("Url not provided!");
 
-      const [currentRoute, paramValues] = this.patchUrlWithParams(url);
-      const apiResponse = await this.api.sendRequest(currentRoute, paramValues);
+      const endPoint = Router.findWithParams(url, method as HttpMethod);
+      // TODO: Implement "Not found" case and throw error
+      const apiResponse = await this.api.sendRequest(endPoint);
 
+      // TODO: Handle header according to the api response type
       res.writeHead(200, { "Content-Type": "application/json" });
       res.end(apiResponse);
     } catch (err) {

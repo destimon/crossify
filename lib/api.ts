@@ -1,10 +1,11 @@
-import undici from "undici";
-import { Crossify } from "./crossify";
+import { request } from "undici";
+import { RequestRoute } from "../types/router";
 
 export class Api {
   private replaceApiUrl = (apiUrl: string, params: string[]) => {
     let index = 0;
 
+    // TODO: Find way to simplify expression
     return apiUrl
       .split("/")
       .map((part) => {
@@ -19,13 +20,15 @@ export class Api {
       .join("/");
   };
 
-  async sendRequest(currentRoute: string, paramValues: string[]) {
-    const apiUrl = Crossify.routes[currentRoute].api;
-    const apiUrlWithParams = this.replaceApiUrl(apiUrl, paramValues);
-    const { body } = await undici.request(apiUrlWithParams);
+  async sendRequest(route: RequestRoute) {
+    const { state, paramValues } = route;
+    const { api, method, handler } = state;
+    const apiUrlWithParams = this.replaceApiUrl(api, paramValues);
+    const { body } = await request(apiUrlWithParams, { method }); // API Request
+    // TODO: Remove ts ignore
     // @ts-ignore
     const data = await body.json();
-    const responseData = await Crossify.routes[currentRoute].handler(data);
+    const responseData = await handler(data);
 
     return JSON.stringify(responseData);
   }
