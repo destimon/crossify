@@ -1,6 +1,10 @@
 {
   "name": "crossify",
   "version": "1.0.1",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/destimon/crossify"
+  },
   "description": "Lightweight web framework for cross API handling",
   "main": "dist/index.js",
   "scripts": {
